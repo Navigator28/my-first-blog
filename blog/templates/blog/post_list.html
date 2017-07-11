@@ -9,10 +9,13 @@
 <header>
 <h2>Hey there!</h2>
     </header>
-<nav>
-<p>Html basics <-- css is coming soon</p>
-
-    </nav>
+{% for post in posts %}
+    <div>
+        <p>published: {{ post.published_date }}</p>
+        <h1>{{ post.title }}</h1>
+        <p>{{ post.text|linebreaksbr }}</p>
+    </div>
+{% endfor %}
 <footer>
     <p id="smaller"> Email: nathan.muigg@tsn.at</p>
 
