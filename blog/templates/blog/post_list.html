@@ -1,26 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Worked well</title>
-</head>
-<body>
-<div id="wrapper">
-<header>
-<h2>Hey there!</h2>
-    </header>
-{% for post in posts %}
-    <div>
-        <p>published: {{ post.published_date }}</p>
-        <h1>{{ post.title }}</h1>
-        <p>{{ post.text|linebreaksbr }}</p>
-    </div>
-{% endfor %}
-<footer>
-    <p id="smaller"> Email: nathan.muigg@tsn.at</p>
+{% extends 'blog/base.html' %}
 
+{% block content %}
 
-</footer>
-</div>
-</body>
-</html>
+    {% for post in posts %}
+        <div class="post">
+            <div class="date">
+                {{ post.published_date }}
+            </div>
+            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+            <p>{{ post.text|linebreaksbr }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
